@@ -25,7 +25,7 @@ class MCTS():
         if len(hist_sel)==0:
             self.children.append(MCTS(n_state, self.br_factor, self.state,self.is_terminal,1))
         else:
-            depth = len(hist_sel)+1
+            depth = len(hist_sel)
             for index in hist_sel:
                 self = self.children[index]
             self.children.append(MCTS(n_state, self.br_factor, self.state,self.is_terminal,depth))
