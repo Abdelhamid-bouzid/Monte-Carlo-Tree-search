@@ -10,10 +10,13 @@ from MCTS import MCTS
 tree = MCTS(1,3)
 
 '''################### add Nodes to the tree ############################'''
-tree.addNode(2)
-tree.addNode(2)
-tree.addNode(2)
-tree.addNode(3)
+tree.addNode(2,[])
+tree.addNode(3,[])
+tree.addNode(4,[])
+
+tree.addNode(-2,[0])
+tree.addNode(-3,[1])
+tree.addNode(-4,[2])
 
 '''##################### Selection path  ################################'''
 hist_sel = tree.selection()
