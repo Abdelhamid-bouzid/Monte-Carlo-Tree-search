@@ -20,13 +20,15 @@ class MCTS():
         self.Q           = 0
         self.U           = -np.NINF
     
-    '''##################################### add Node Function ###########################################'''    
-    def addNode(self, n_state):
-        if self.state:
-            if len(self.children)<self.br_factor:
-                self.children.append(MCTS(n_state, self.br_factor, self.state))
-            else:
-                self.children[0].addNode(n_state)
+    '''##################################### add Node Function ###########################################'''
+    def addNode(self,n_state,hist_sel):
+        if len(hist_sel)==0:
+            self.children.append(MCTS(n_state, self.br_factor, self.state,self.is_terminal,1))
+        else:
+            depth = len(hist_sel)+1
+            for index in hist_sel:
+                self = self.children[index]
+            self.children.append(MCTS(n_state, self.br_factor, self.state,self.is_terminal,depth))
                 
     '''##################################### Selction Function ###########################################'''            
     def selection(self):
